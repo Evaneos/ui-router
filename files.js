@@ -7,6 +7,7 @@ routerFiles = {
     'src/urlRouter.js',
     'src/state.js',
     'src/view.js',
+    'src/viewPreventUpdate.js',
     'src/viewScroll.js',
     'src/viewDirective.js',
     'src/stateDirectives.js',

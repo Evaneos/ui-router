@@ -111,8 +111,8 @@
  * <ui-view autoscroll='scopeVariable'/>
  * </pre>
  */
-$ViewDirective.$inject = ['$state', '$injector', '$uiViewScroll'];
-function $ViewDirective(   $state,   $injector,   $uiViewScroll) {
+$ViewDirective.$inject = ['$state', '$injector', '$uiViewScroll', '$viewPreventUpdate'];
+function $ViewDirective(   $state,   $injector,   $uiViewScroll, $viewPreventUpdateProvider) {
 
   function getService() {
     return ($injector.has) ? function(service) {
@@ -172,9 +172,17 @@ function $ViewDirective(   $state,   $injector,   $uiViewScroll) {
             renderer      = getRenderer(attrs, scope);
 
         scope.$on('$stateChangeSuccess', function() {
+          if ($viewPreventUpdateProvider.isCanceled(tAttrs.uiView)) {
+            return;
+          }
+
           updateView(false);
         });
         scope.$on('$viewContentLoading', function() {
+          if ($viewPreventUpdateProvider.isCanceled(tAttrs.uiView)) {
+            return;
+          }
+
           updateView(false);
         });
 
