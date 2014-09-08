@@ -13,7 +13,7 @@ function $ViewPreventUpdateProvider() {
     return viewCancels[name]();
   };
 
-  this.$get = function() { return this; }
+  this.$get = function() { return this; };
 }
 
 angular.module('ui.router.state').provider('$viewPreventUpdate', $ViewPreventUpdateProvider);
