@@ -183,7 +183,7 @@ function $ViewDirective(   $state,   $injector,   $uiViewScroll, $viewPreventUpd
             return;
           }
 
-          updateView(false);
+          if (!$viewPreventUpdateProvider.preventViewContentLoading) updateView(false);
         });
 
         updateView(true);
