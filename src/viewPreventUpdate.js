@@ -7,7 +7,7 @@ function $ViewPreventUpdateProvider() {
     if (prevent === undefined) return self.prevent;
 
     self.prevent = !!prevent;
-  }
+  };
 
   this.view = function(name, cancelOn) {
     viewCancels[name] = cancelOn;
